@@ -511,161 +511,143 @@
             <p class="text-purple-200">May your days be filled with love, laughter, and lots of momos! 🥟✨</p>
         </div>
     </footer>
+<script>
+    // Love particles animation
+    function createParticles() {
+        const particles = document.getElementById('particles');
+        const emojis = ['💕', '💖', '🥟', '🌟', '✨', '💫', '🍎', '🥗'];
+        
+        setInterval(() => {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 2 + 's';
+            particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            particles.appendChild(particle);
+            
+            setTimeout(() => {
+                particle.remove();
+            }, 6000);
+        }, 2000);
+    }
 
-    <script>
-        // Love particles animation
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            const emojis = ['💕', '💖', '🥟', '🌟', '✨', '💫', '🍎', '🥗'];
-            
-            setInterval(() => {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 2 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
-                particles.appendChild(particle);
-                
-                setTimeout(() => {
-                    particle.remove();
-                }, 6000);
-            }, 2000);
-        }
-        
-        // Momo counter
-        let momoCount = 0;
-        function addMomo() {
-            momoCount++;
-            document.getElementById('momoCounter').textContent = momoCount;
-            
-            // Add celebration effect
-            const counter = document.getElementById('momoCounter');
-            counter.style.transform = 'scale(1.2)';
-            counter.style.color = '#f59e0b';
-            setTimeout(() => {
-                counter.style.transform = 'scale(1)';
-                counter.style.color = '#ea580c';
-            }, 200);
-        }
-        
-        // Love messages
-        const loveMessages = [
-            "You're as sweet as the momos you love and as beautiful as the healthy glow you radiate! 💕",
-            "Your smile is brighter than any star, and your love for good food makes you even more special! 🌟",
-            "Like the perfect momo, you bring joy to everyone around you! 🥟💖",
-            "You're the perfect blend of sweetness and strength, just like your favorite healthy meals! 💪✨",
-            "Your passion for nutrition and love for momos shows your beautiful balance in life! 🥗💕",
-            "Every day with you is like discovering a new favorite dish - exciting and wonderful! 🍽️💖",
-            "You make healthy eating look so good, and your momo enthusiasm is absolutely adorable! 🥟😊",
-            "Your caring nature and love for good food make you the most special person! 💕🌟"
-        ];
-        
-        function newLoveMessage() {
-            const messageEl = document.getElementById('loveMessage');
-            const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
-            messageEl.style.opacity = '0';
-            setTimeout(() => {
-                messageEl.textContent = randomMessage;
-                messageEl.style.opacity = '1';
-            }, 300);
-        }
-        
-        // Smooth scrolling for navigation
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+    // Momo counter
+    let momoCount = 0;
+    function addMomo() {
+        momoCount++;
+        document.getElementById('momoCounter').textContent = momoCount;
+        const counter = document.getElementById('momoCounter');
+        counter.style.transform = 'scale(1.2)';
+        counter.style.color = '#f59e0b';
+        setTimeout(() => {
+            counter.style.transform = 'scale(1)';
+            counter.style.color = '#ea580c';
+        }, 200);
+    }
+
+    // Love messages
+    const loveMessages = [
+        "You're as sweet as the momos you love and as beautiful as the healthy glow you radiate! 💕",
+        "Your smile is brighter than any star, and your love for good food makes you even more special! 🌟",
+        "Like the perfect momo, you bring joy to everyone around you! 🥟💖",
+        "You're the perfect blend of sweetness and strength, just like your favorite healthy meals! 💪✨",
+        "Your passion for nutrition and love for momos shows your beautiful balance in life! 🥗💕",
+        "Every day with you is like discovering a new favorite dish - exciting and wonderful! 🍽️💖",
+        "You make healthy eating look so good, and your momo enthusiasm is absolutely adorable! 🥟😊",
+        "Your caring nature and love for good food make you the most special person! 💕🌟"
+    ];
+
+    function newLoveMessage() {
+        const messageEl = document.getElementById('loveMessage');
+        const randomMessage = loveMessages[Math.floor(Math.random() * loveMessages.length)];
+        messageEl.style.opacity = '0';
+        setTimeout(() => {
+            messageEl.textContent = randomMessage;
+            messageEl.style.opacity = '1';
+        }, 300);
+    }
+
+    // Smooth scrolling for navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ✅ SEND WHATSAPP MESSAGE
+    function sendLoveMessage() {
+        const phoneNumber = '916009426972'; // +91 60094 26972
+        const message = 'i love you from rohan puchu ❤️';
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+    }
+
+    // Optional: Add click listeners to various cute elements
+    function addWhatsAppListeners() {
+        document.querySelectorAll('.pulse-heart, .floating, .photo-placeholder').forEach(el => {
+            el.addEventListener('click', function(e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
+                sendLoveMessage();
             });
         });
-        
-        // WhatsApp Love Message Function
-        function sendLoveMessage() {
-            const phoneNumber = '916009426972'; // Ritisha's WhatsApp number
-            const message = 'I love you ❤️💕';
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-        }
-        
-        // Add WhatsApp integration to various elements
-        function addWhatsAppListeners() {
-            // Add click listeners to love-themed elements
-            const loveElements = [
-                '.pulse-heart',
-                '.sparkle',
-                'button:contains("Send Love")',
-                'button:contains("💕")',
-                '.text-gradient',
-                '.floating'
-            ];
-            
-            // Add listeners to heart emojis and love buttons
-            document.querySelectorAll('.pulse-heart, .floating').forEach(element => {
-                element.addEventListener('click', function(e) {
+
+        document.querySelectorAll('button').forEach(button => {
+            if (
+                button.textContent.includes('💕') ||
+                button.textContent.includes('💖') ||
+                button.textContent.includes('Love') ||
+                button.textContent.includes('Send')
+            ) {
+                button.addEventListener('click', function(e) {
                     e.preventDefault();
                     sendLoveMessage();
                 });
-            });
-            
-            // Add listeners to love-themed buttons
-            document.querySelectorAll('button').forEach(button => {
-                if (button.textContent.includes('💕') || 
-                    button.textContent.includes('Love') || 
-                    button.textContent.includes('💖')) {
-                    button.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        sendLoveMessage();
-                    });
-                }
-            });
-            
-            // Add listeners to photo placeholders
-            document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
-                placeholder.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    sendLoveMessage();
-                });
-            });
-            
-            // Add listeners to love particles
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('particle') || 
-                    e.target.textContent.includes('💕') || 
-                    e.target.textContent.includes('💖')) {
-                    sendLoveMessage();
-                }
-            });
-        }
-        
-        // Initialize particles
-        createParticles();
-        
-        // Add entrance animations on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
+            }
         });
-        
-        // Initialize WhatsApp integration
-        addWhatsAppListeners();
-    </script>
+
+        document.addEventListener('click', function(e) {
+            if (
+                e.target.classList.contains('particle') ||
+                e.target.textContent.includes('💕') ||
+                e.target.textContent.includes('💖')
+            ) {
+                sendLoveMessage();
+            }
+        });
+    }
+
+    // Init animations
+    createParticles();
+
+    // Scroll animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+    });
+
+    // Initialize WhatsApp Love integration
+    addWhatsAppListeners();
+</script>
+
 </body>
 </html>
