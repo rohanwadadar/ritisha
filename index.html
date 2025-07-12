@@ -338,6 +338,46 @@
         </div>
     </section>
 
+    <!-- Gym & Fitness Section -->
+<section id="gym" class="py-20 px-6 bg-gradient-to-br from-purple-100 to-pink-100">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gradient mb-4">💪 Ritisha's Gym & Fitness Journey</h2>
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+                From lifting weights to glowing up with sweat and dedication — Ritisha's gym game is strong! 🏋️‍♀️🔥
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+            <div class="bg-white/80 p-8 rounded-3xl shadow-xl text-center">
+                <div class="text-5xl mb-4">🏋️‍♀️</div>
+                <h3 class="text-2xl font-bold text-purple-800 mb-3">Why She Loves the Gym</h3>
+                <p class="text-gray-700 mb-4">Gym is not just a place to workout — it's her happy place, her discipline, and a daily dose of confidence.</p>
+                <ul class="text-left text-gray-600 list-disc list-inside space-y-2">
+                    <li>Boosts her energy and mood 🌟</li>
+                    <li>Helps maintain a balanced lifestyle ⚖️</li>
+                    <li>She never skips leg day! 🠵</li>
+                    <li>Slays cardio and strength both 🔥</li>
+                </ul>
+            </div>
+
+            <div class="text-center">
+                <img src="https://source.unsplash.com/500x500/?fitness,gym,girl" alt="Gym pic" class="rounded-3xl shadow-xl mx-auto hover:scale-105 transition-transform duration-300">
+                <p class="mt-2 text-sm text-gray-500 italic">(*Replace this with a real image of her workout from Instagram)</p>
+            </div>
+        </div>
+
+        <!-- Optional: Gym Day Counter -->
+        <div class="mt-16 text-center">
+            <h4 class="text-xl font-bold text-pink-600">Days Trained This Month: <span id="gymDays">0</span></h4>
+            <button onclick="addGymDay()" class="mt-3 bg-purple-500 text-white px-6 py-2 rounded-full hover:bg-purple-600 transition-colors">
+                Add Gym Day 💪
+            </button>
+        </div>
+    </div>
+</section>
+
+
     <!-- Momos Section -->
     <section id="momos" class="py-20 px-6 momo-gradient">
         <div class="container mx-auto">
@@ -648,6 +688,12 @@
     // Initialize WhatsApp Love integration
     addWhatsAppListeners();
 </script>
-
+<script>
+let gymDayCount = 0;
+function addGymDay() {
+    gymDayCount++;
+    document.getElementById('gymDays').textContent = gymDayCount;
+}
+</script>
 </body>
 </html>
