@@ -361,15 +361,17 @@
             </div>
 
             <div class="text-center">
-                <video src="AQOgEj_XsyRFUm5_t_EU5TDhAqQW8LMUQaNfqv226WIXVL8MIzSgCfpxrgVziwYNhD38EaBQ544DATPe3t61-jDymUES8nAEJYJZY_I.mp4" 
-                       class="rounded-3xl shadow-xl mx-auto my-4 hover:scale-105 transition-transform duration-300"
-                       autoplay
-                       controls
-                       muted
-                       id="gymVideo">
-                    Your browser does not support the video tag.
-                </video>
-                <p class="mt-2 text-sm text-gray-500 italic">(*Replace this with a real image of her workout from Instagram)</p>
+                <div class="overflow-hidden rounded-3xl shadow-xl mx-auto my-4">
+                    <video src="AQOgEj_XsyRFUm5_t_EU5TDhAqQW8LMUQaNfqv226WIXVL8MIzSgCfpxrgVziwYNhD38EaBQ544DATPe3t61-jDymUES8nAEJYJZY_I.mp4"
+                           class="w-full object-cover h-96"
+                           autoplay
+                           muted
+                           loop
+                           playsinline
+                           id="gymVideo">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
                 <button onclick="toggleSound()" class="mt-3 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors">
                     Toggle Sound 🔊
                 </button>
@@ -385,6 +387,8 @@
         </div>
     </div>
 </section>
+
+
 
 
 
@@ -712,6 +716,8 @@ function toggleSound() {
     video.muted = !video.muted;
 }
 </script>
+
+
 </script>
 </body>
 </html>
