@@ -337,8 +337,7 @@
             </div>
         </div>
     </section>
-
-    <!-- Gym & Fitness Section -->
+<!-- Gym & Fitness Section -->
 <section id="gym" class="py-20 px-6 bg-gradient-to-br from-purple-100 to-pink-100">
     <div class="container mx-auto">
         <div class="text-center mb-16">
@@ -356,14 +355,24 @@
                 <ul class="text-left text-gray-600 list-disc list-inside space-y-2">
                     <li>Boosts her energy and mood 🌟</li>
                     <li>Helps maintain a balanced lifestyle ⚖️</li>
-                    <li>She never skips leg day! 🠵</li>
+                    <li>She never skips leg day! 🔽</li>
                     <li>Slays cardio and strength both 🔥</li>
                 </ul>
             </div>
 
             <div class="text-center">
-                <video src="AQOgEj_XsyRFUm5_t_EU5TDhAqQW8LMUQaNfqv226WIXVL8MIzSgCfpxrgVziwYNhD38EaBQ544DATPe3t61-jDymUES8nAEJYJZY_I.mp4" alt="Gym pic" class="rounded-3xl shadow-xl mx-auto hover:scale-105 transition-transform duration-300">
+                <video src="AQOgEj_XsyRFUm5_t_EU5TDhAqQW8LMUQaNfqv226WIXVL8MIzSgCfpxrgVziwYNhD38EaBQ544DATPe3t61-jDymUES8nAEJYJZY_I.mp4" 
+                       class="rounded-3xl shadow-xl mx-auto my-4 hover:scale-105 transition-transform duration-300"
+                       autoplay
+                       controls
+                       muted
+                       id="gymVideo">
+                    Your browser does not support the video tag.
+                </video>
                 <p class="mt-2 text-sm text-gray-500 italic">(*Replace this with a real image of her workout from Instagram)</p>
+                <button onclick="toggleSound()" class="mt-3 bg-pink-500 text-white px-4 py-2 rounded-full hover:bg-pink-600 transition-colors">
+                    Toggle Sound 🔊
+                </button>
             </div>
         </div>
 
@@ -376,6 +385,9 @@
         </div>
     </div>
 </section>
+
+
+
 
 
     <!-- Momos Section -->
@@ -694,6 +706,12 @@ function addGymDay() {
     gymDayCount++;
     document.getElementById('gymDays').textContent = gymDayCount;
 }
+
+function toggleSound() {
+    const video = document.getElementById('gymVideo');
+    video.muted = !video.muted;
+}
+</script>
 </script>
 </body>
 </html>
