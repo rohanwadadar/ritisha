@@ -716,6 +716,37 @@ function toggleSound() {
     const video = document.getElementById('gymVideo');
     video.muted = !video.muted;
 }
+
+    <script>
+// Load stored image on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedImage = localStorage.getItem("ritishaPhoto");
+    const imageBox = document.getElementById("customImageBox");
+
+    if (savedImage) {
+        imageBox.innerHTML = `<img src="${savedImage}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
+    }
+});
+
+// Handle image upload
+document.getElementById("imageUploader").addEventListener("change", function () {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const base64Image = e.target.result;
+        localStorage.setItem("ritishaPhoto", base64Image);
+
+        const imageBox = document.getElementById("customImageBox");
+        imageBox.innerHTML = `<img src="${base64Image}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
+</script>
+
 </script>
 
 
