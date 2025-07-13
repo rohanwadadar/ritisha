@@ -41,18 +41,23 @@
         }
         
         .photo-placeholder {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border: 3px dashed #ff9a9e;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #ff6b6b;
-            font-weight: bold;
-            text-align: center;
-            border-radius: 20px;
-            min-height: 200px;
-            transition: all 0.3s ease;
-        }
+  width: 100%;
+  max-width: 320px;  /* or whatever fixed width */
+  height: 220px;     /* image height + padding */
+  margin: 0 auto;
+  border: 2px dashed #ccc;
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+}
+
         
         .photo-placeholder:hover {
             transform: scale(1.05);
@@ -337,6 +342,9 @@
             </div>
         </div>
     </section>
+
+
+
 <!-- Gym & Fitness Section -->
 <section id="gym" class="py-20 px-6 bg-gradient-to-br from-purple-100 to-pink-100">
     <div class="container mx-auto">
@@ -447,6 +455,8 @@
     </section>
 
 
+
+
     <!-- Gallery Section -->
     <section id="gallery" class="py-20 px-6 bg-gradient-to-br from-pink-50 to-purple-50">
         <div class="container mx-auto">
@@ -547,39 +557,59 @@
 
 <!-- JS for Image Upload -->
 <script>
-// Load stored image on page load
-window.addEventListener("DOMContentLoaded", () => {
-    const savedImage = localStorage.getItem("ritishaPhoto");
-    const imageBox = document.getElementById("customImageBox");
-
-    if (savedImage) {
-        imageBox.innerHTML = `<img src="${savedImage}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
-    }
+// Restore saved photos on page load
+window.addEventListener('DOMContentLoaded', () => {
+    const boxes = document.querySelectorAll('.photo-placeholder');
+    boxes.forEach(box => {
+        const id = box.id;
+        const savedImage = localStorage.getItem(id);
+        if (savedImage) {
+            setPhoto(box, savedImage);
+        }
+    });
 });
 
-// Handle image upload
-document.getElementById("imageUploader").addEventListener("change", function () {
-    const file = this.files[0];
+function setPhoto(box, base64Image) {
+    box.innerHTML = `
+        <img src="${base64Image}" alt="Uploaded Photo" />
+        <input type="file" accept="image/*" onchange="uploadImage(this, '${box.id}')" class="photo-input" style="display:none;">
+    `;
+}
+
+
+// Upload handler for each photo box
+function uploadImage(input, boxId) {
+    const file = input.files[0];
     const reader = new FileReader();
 
-    reader.onload = function (e) {
+    reader.onload = function(e) {
         const base64Image = e.target.result;
-        localStorage.setItem("ritishaPhoto", base64Image);
+        localStorage.setItem(boxId, base64Image);
 
-        const imageBox = document.getElementById("customImageBox");
-        imageBox.innerHTML = `<img src="${base64Image}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
+        const box = document.getElementById(boxId);
+        setPhoto(box, base64Image);
     };
 
     if (file) {
         reader.readAsDataURL(file);
     }
-});
-
-// Reset photo function
-function resetPhoto() {
-    localStorage.removeItem("ritishaPhoto");
-    location.reload();
 }
+
+// Optional: function to clear all photos from localStorage and UI
+function clearAllPhotos() {
+    const boxes = document.querySelectorAll('.photo-placeholder');
+    boxes.forEach(box => {
+        localStorage.removeItem(box.id);
+        box.innerHTML = `
+            <div class="text-center">
+                <div class="text-4xl mb-2">📷</div>
+                <p class="text-sm">Click to Upload<br>${box.id}</p>
+            </div>
+            <input type="file" accept="image/*" onchange="uploadImage(this, '${box.id}')" class="photo-input">
+        `;
+    });
+}
+
 </script>
 
     <section class="py-20 px-6 bg-gradient-to-br from-pink-100 to-purple-100">
@@ -701,9 +731,16 @@ function sendLoveMessage() {
     window.open(whatsappUrl, '_blank');
 }
 
+
+
 // ❤️ --- Add Event Listeners to Cute Elements ---
 function addWhatsAppListeners() {
-    const clickableElements = document.querySelectorAll('.pulse-heart, .floating, .photo-placeholder');
+   
+   
+   
+   
+   
+    const clickableElements = document.querySelectorAll('.pulse-heart, .floating');
     clickableElements.forEach(el => el.addEventListener('click', sendLoveMessage));
 
     document.querySelectorAll('button').forEach(button => {
