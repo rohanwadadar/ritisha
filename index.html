@@ -447,73 +447,120 @@
     </section>
 
     <!-- Photo Gallery Section -->
-    <section class="py-20 px-6 bg-white/30 backdrop-blur-sm">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gradient mb-4">📸 Ritisha's Beautiful Moments</h2>
-                <p class="text-xl text-gray-700 max-w-2xl mx-auto">
-                    Memories captured from her Instagram @ritisha_here 💕
-                </p>
-            </div>
-            
-            <div class="instagram-grid">
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">📷</div>
-                        <p>Add her beautiful selfies here!</p>
-                        <small class="text-sm opacity-75">Replace with actual photos</small>
-                    </div>
-                </div>
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">🥟</div>
-                        <p>Her favorite momo moments!</p>
-                        <small class="text-sm opacity-75">Food photography</small>
-                    </div>
-                </div>
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">🥗</div>
-                        <p>Healthy meal creations</p>
-                        <small class="text-sm opacity-75">Nutrition posts</small>
-                    </div>
-                </div>
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">✨</div>
-                        <p>Her radiant smile</p>
-                        <small class="text-sm opacity-75">Candid moments</small>
-                    </div>
-                </div>
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">🌟</div>
-                        <p>Daily adventures</p>
-                        <small class="text-sm opacity-75">Lifestyle shots</small>
-                    </div>
-                </div>
-                <div class="photo-placeholder">
-                    <div>
-                        <div class="text-4xl mb-2">💖</div>
-                        <p>Sweet memories</p>
-                        <small class="text-sm opacity-75">Special moments</small>
-                    </div>
+<section class="py-20 px-6 bg-white/30 backdrop-blur-sm">
+    <div class="container mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gradient mb-4">📸 Ritisha's Beautiful Moments</h2>
+            <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+                Memories captured from her Instagram @ritisha_here 💕
+            </p>
+        </div>
+
+        <!-- Image Grid -->
+        <div class="grid md:grid-cols-3 gap-6 instagram-grid">
+            <!-- Uploadable Image Box -->
+            <div class="photo-placeholder relative overflow-hidden" id="customImageBox">
+                <input type="file" id="imageUploader" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer z-10">
+                <div id="customImageContent" class="text-center pointer-events-none">
+                    <div class="text-4xl mb-2">📷</div>
+                    <p>Add her beautiful selfies here!</p>
+                    <small class="text-sm opacity-75">Click to upload</small>
                 </div>
             </div>
-            
-            <div class="text-center mt-12">
-                <div class="bg-pink-100/80 p-6 rounded-3xl max-w-md mx-auto">
-                    <h3 class="text-xl font-bold text-pink-800 mb-2">How to Add Her Photos:</h3>
-                    <ol class="text-left text-pink-700 space-y-2">
-                        <li>1. Save photos from her Instagram</li>
-                        <li>2. Replace the placeholder divs with img tags</li>
-                        <li>3. Add src="photo-url" to each image</li>
-                        <li>4. Enjoy the beautiful gallery! 💕</li>
-                    </ol>
+
+            <!-- Static Placeholders -->
+            <div class="photo-placeholder">
+                <div>
+                    <div class="text-4xl mb-2">🥟</div>
+                    <p>Her favorite momo moments!</p>
+                    <small class="text-sm opacity-75">Food photography</small>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                <div>
+                    <div class="text-4xl mb-2">🥗</div>
+                    <p>Healthy meal creations</p>
+                    <small class="text-sm opacity-75">Nutrition posts</small>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                <div>
+                    <div class="text-4xl mb-2">✨</div>
+                    <p>Her radiant smile</p>
+                    <small class="text-sm opacity-75">Candid moments</small>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                <div>
+                    <div class="text-4xl mb-2">🌟</div>
+                    <p>Daily adventures</p>
+                    <small class="text-sm opacity-75">Lifestyle shots</small>
+                </div>
+            </div>
+            <div class="photo-placeholder">
+                <div>
+                    <div class="text-4xl mb-2">💖</div>
+                    <p>Sweet memories</p>
+                    <small class="text-sm opacity-75">Special moments</small>
                 </div>
             </div>
         </div>
-    </section>
+
+        <!-- Instructions and Reset -->
+        <div class="text-center mt-12">
+            <div class="bg-pink-100/80 p-6 rounded-3xl max-w-md mx-auto">
+                <h3 class="text-xl font-bold text-pink-800 mb-2">How to Add Her Photos:</h3>
+                <ol class="text-left text-pink-700 space-y-2 mb-4">
+                    <li>1. Click on the first image box</li>
+                    <li>2. Upload her photo</li>
+                    <li>3. It will be saved in your browser</li>
+                    <li>4. Enjoy the lovely gallery! 💕</li>
+                </ol>
+                <button onclick="resetPhoto()" class="mt-2 bg-red-400 text-white px-4 py-2 rounded-full hover:bg-red-500 transition">
+                    Reset Photo ❌
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- JS for Image Upload -->
+<script>
+// Load stored image on page load
+window.addEventListener("DOMContentLoaded", () => {
+    const savedImage = localStorage.getItem("ritishaPhoto");
+    const imageBox = document.getElementById("customImageBox");
+
+    if (savedImage) {
+        imageBox.innerHTML = `<img src="${savedImage}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
+    }
+});
+
+// Handle image upload
+document.getElementById("imageUploader").addEventListener("change", function () {
+    const file = this.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+        const base64Image = e.target.result;
+        localStorage.setItem("ritishaPhoto", base64Image);
+
+        const imageBox = document.getElementById("customImageBox");
+        imageBox.innerHTML = `<img src="${base64Image}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
+    };
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+});
+
+// Reset photo function
+function resetPhoto() {
+    localStorage.removeItem("ritishaPhoto");
+    location.reload();
+}
+</script>
+
     <section class="py-20 px-6 bg-gradient-to-br from-pink-100 to-purple-100">
         <div class="container mx-auto text-center">
             <h2 class="text-4xl font-bold text-gradient mb-8">💕 Sweet Messages for Ritisha</h2>
@@ -717,35 +764,6 @@ function toggleSound() {
     video.muted = !video.muted;
 }
 
-    <script>
-// Load stored image on page load
-window.addEventListener("DOMContentLoaded", () => {
-    const savedImage = localStorage.getItem("ritishaPhoto");
-    const imageBox = document.getElementById("customImageBox");
-
-    if (savedImage) {
-        imageBox.innerHTML = `<img src="${savedImage}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
-    }
-});
-
-// Handle image upload
-document.getElementById("imageUploader").addEventListener("change", function () {
-    const file = this.files[0];
-    const reader = new FileReader();
-
-    reader.onload = function (e) {
-        const base64Image = e.target.result;
-        localStorage.setItem("ritishaPhoto", base64Image);
-
-        const imageBox = document.getElementById("customImageBox");
-        imageBox.innerHTML = `<img src="${base64Image}" class="w-full h-full object-cover rounded-2xl" alt="Ritisha's Photo">`;
-    };
-
-    if (file) {
-        reader.readAsDataURL(file);
-    }
-});
-</script>
 
 </script>
 
