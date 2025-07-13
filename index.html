@@ -445,62 +445,105 @@
             </div>
         </div>
     </section>
-<section id="gallery" class="py-16 bg-pink-50">
-  <div class="max-w-6xl mx-auto px-4 text-center">
-    <h2 class="text-4xl font-bold text-pink-600 mb-6">💖 Sweet Moments Gallery</h2>
-    <p class="text-gray-700 mb-10">Some adorable snapshots and memories we cherish together! 🥟📸✨</p>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-      <!-- Image 1 -->
-      <div class="relative group overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/500x400/?momo,food" alt="Momo" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <p class="text-white text-lg font-semibold">Momo Date! 🥟💕</p>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 px-6 bg-gradient-to-br from-pink-50 to-purple-50">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gradient mb-4">💖 Sweet Moments Gallery</h2>
+                <p class="text-xl text-gray-700 max-w-2xl mx-auto">
+                    Upload and cherish beautiful memories together! Click on any image to upload your own photos 📸✨
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Photo Upload Box 1 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox1">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 1</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox1')" class="photo-input">
+                    </div>
+                </div>
+
+                <!-- Photo Upload Box 2 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox2">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 2</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox2')" class="photo-input">
+                    </div>
+                </div>
+
+                <!-- Photo Upload Box 3 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox3">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 3</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox3')" class="photo-input">
+                    </div>
+                </div>
+
+                <!-- Photo Upload Box 4 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox4">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 4</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox4')" class="photo-input">
+                    </div>
+                </div>
+
+                <!-- Photo Upload Box 5 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox5">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 5</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox5')" class="photo-input">
+                    </div>
+                </div>
+
+                <!-- Photo Upload Box 6 -->
+                <div class="gallery-item">
+                    <div class="photo-placeholder" id="photoBox6">
+                        <div class="text-center">
+                            <div class="text-4xl mb-2">📷</div>
+                            <p class="text-sm">Click to Upload<br>Sweet Memory 6</p>
+                        </div>
+                        <input type="file" accept="image/*" onchange="uploadImage(this, 'photoBox6')" class="photo-input">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Controls -->
+            <div class="text-center mt-16">
+                <div class="bg-white/80 p-8 rounded-3xl shadow-xl max-w-md mx-auto">
+                    <h3 class="text-2xl font-bold text-pink-800 mb-4">Gallery Controls 🎨</h3>
+                    <div class="space-y-3">
+                        <button onclick="clearAllPhotos()" class="w-full bg-red-500 text-white px-6 py-3 rounded-full hover:bg-red-600 transition-colors">
+                            Clear All Photos 🗑️
+                        </button>
+                        <button onclick="downloadGallery()" class="w-full bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition-colors">
+                            Download Gallery 📁
+                        </button>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4">
+                        Images are saved locally in your browser. They will persist until you clear them or clear your browser data.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <!-- Image 2 -->
-      <div class="relative group overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/500x400/?fitness,love" alt="Workout" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <p class="text-white text-lg font-semibold">Gym Goals Together 💪❤️</p>
-        </div>
-      </div>
-
-      <!-- Image 3 -->
-      <div class="relative group overflow-hidden rounded-xl shadow-lg">
-        <img src="https://source.unsplash.com/500x400/?romantic,couple" alt="Date" class="w-full h-64 object-cover transform group-hover:scale-105 transition duration-300">
-        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
-          <p class="text-white text-lg font-semibold">Date Night 💫🍝</p>
-        </div>
-      </div>
-
-      <!-- More images can be added similarly -->
-    </div>
-      
-
-        <!-- Instructions and Reset -->
-        <div class="text-center mt-12">
-            <div class="bg-pink-100/80 p-6 rounded-3xl max-w-md mx-auto">
-                <h3 class="text-xl font-bold text-pink-800 mb-2">How to Add Her Photos:</h3>
-                <ol class="text-left text-pink-700 space-y-2 mb-4">
-                    <li>1. Click on the first image box</li>
-                    <li>2. Upload her photo</li>
-                    <li>3. It will be saved in your browser</li>
-                    <li>4. Enjoy the lovely gallery! 💕</li>
-                </ol>
-                <button onclick="resetPhoto()" class="mt-2 bg-red-400 text-white px-4 py-2 rounded-full hover:bg-red-500 transition">
-                    Reset Photo ❌
-                </button>
-
-    <!-- Button -->
-    <div class="mt-12">
-      <button onclick="sendLoveMessage()" class="bg-pink-500 hover:bg-pink-600 text-white py-3 px-6 rounded-full shadow-md transition transform hover:scale-105">
-        Send a 💕 to My Love
-      </button>
-    </div>
-  </div>
-</section>
+    </section>
 
 <!-- JS for Image Upload -->
 <script>
